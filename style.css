@@ -17,4 +17,11 @@ div#content {
     height: auto;
     font-size: 200pt;
     display: inline-block;
+    cursor: grab;
+    text-overflow: clip;
+    user-select: none;
+}
+
+div#content:active {
+    cursor: grabbing;
 }
