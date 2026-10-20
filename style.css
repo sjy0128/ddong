@@ -25,3 +25,7 @@ div#content {
 div#content:active {
     cursor: grabbing;
 }
+
+body {
+    background-color: aqua;
+}
