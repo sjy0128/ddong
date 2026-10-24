@@ -9,17 +9,66 @@
         <div id="container">
             <h1>당신이 똥을 먹은 횟수: <span id="count">0</span></h1>
             <div id="content" onclick="add()">
-                <div class="layer tip"></div>
-                <div class="layer top"></div>
-                <div class="layer middle">
-                    <div class="eye left"><div class="pupil"></div></div>
-                    <div class="eye right"><div class="pupil"></div></div>
-                </div>
-                <div class="layer bottom">
-                    <div class="mouth"></div>
-                </div>
+                <svg viewBox="0 0 320 290" width="320" height="290">
+                    <g class="layer" transform="rotate(-20 192 56)">
+                        <rect class="light" x="170" y="34" width="44" height="44" rx="20"/>
+                        <rect class="body" x="170" y="44" width="44" height="34" rx="20"/>
+                        <rect class="outline" x="170" y="34" width="44" height="44" rx="20"/>
+                    </g>
+                    <g class="layer">
+                        <rect class="light" x="90" y="70" width="140" height="60" rx="24"/>
+                        <rect class="body" x="90" y="80" width="140" height="50" rx="24"/>
+                        <rect class="outline" x="90" y="70" width="140" height="60" rx="24"/>
+                    </g>
+                    <g class="layer">
+                        <rect class="light" x="50" y="120" width="220" height="80" rx="24"/>
+                        <rect class="body" x="50" y="130" width="220" height="70" rx="24"/>
+                        <rect class="outline" x="50" y="120" width="220" height="80" rx="24"/>
+                    </g>
+                    <g class="layer">
+                        <rect class="light" x="10" y="190" width="300" height="90" rx="24"/>
+                        <rect class="body" x="10" y="200" width="300" height="80" rx="24"/>
+                        <rect class="outline" x="10" y="190" width="300" height="90" rx="24"/>
+                    </g>
+                    <rect class="eye" x="105" y="142" width="26" height="36" rx="12"/>
+                    <rect class="eye" x="189" y="142" width="26" height="36" rx="12"/>
+                    <rect class="shine" x="110" y="148" width="9" height="9" rx="3"/>
+                    <rect class="shine" x="194" y="148" width="9" height="9" rx="3"/>
+                    <rect class="cheek" x="60" y="206" width="40" height="20" rx="10"/>
+                    <rect class="cheek" x="220" y="206" width="40" height="20" rx="10"/>
+                    <path class="mouth" d="M142 202 Q160 226 178 202"/>
+                </svg>
             </div>
         </div>
+        <svg id="spoon" viewBox="0 0 200 110" width="200" height="110">
+            <defs>
+                <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#f4f6f8"/>
+                    <stop offset="0.5" stop-color="#c4cad2"/>
+                    <stop offset="1" stop-color="#7d858f"/>
+                </linearGradient>
+                <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#b8bec7"/>
+                    <stop offset="1" stop-color="#6b727b"/>
+                </linearGradient>
+                <radialGradient id="inside" cx="0.55" cy="0.75" r="0.7">
+                    <stop offset="0" stop-color="#ffffff"/>
+                    <stop offset="0.6" stop-color="#d3d8de"/>
+                    <stop offset="1" stop-color="#9aa1aa"/>
+                </radialGradient>
+            </defs>
+            <g id="spoon-body">
+                <path class="handle" d="M78 51 C110 46 150 30 190 17 C197 15 200 22 194 26 C155 40 115 54 79 58 Z"/>
+                <path class="handle-shine" d="M95 49 C130 41 160 31 188 20"/>
+                <path class="belly" d="M9 55 C12 82 78 82 81 55 Z"/>
+                <ellipse class="rim" cx="45" cy="55" rx="36" ry="13"/>
+                <g id="scoop">
+                    <path class="mound" d="M15 56 Q17 42 32 39 Q38 33 47 36 Q58 34 64 41 Q74 45 75 56 A30 10 0 0 1 15 56 Z"/>
+                    <ellipse class="mound-shine" cx="36" cy="43" rx="8" ry="3"/>
+                    <path class="lip" d="M9 55 A36 13 0 0 0 81 55"/>
+                </g>
+            </g>
+        </svg>
         <script src="script.js"></script>
     </body>
 </html>

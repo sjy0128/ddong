@@ -18,79 +18,123 @@ div#content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: grab;
     text-overflow: clip;
     user-select: none;
 }
 
-div#content:active {
-    cursor: grabbing;
-}
-
 body {
     background-color: aqua;
+    cursor: none;
 }
 
-div.layer {
-    position: relative;
-    background-color: #8b5a2b;
-    border: 6px solid #5c3a1a;
-    margin-top: -6px;
+div#content svg {
+    display: block;
+    transform-origin: bottom center;
 }
 
-div.tip {
-    width: 50px;
-    height: 40px;
-    margin-left: 50px;
+div#content:active svg {
+    transform: scale(1.05, 0.92);
 }
 
-div.top {
-    width: 150px;
-    height: 60px;
+.layer .light {
+    fill: #cf9258;
 }
 
-div.middle {
-    width: 230px;
-    height: 80px;
+.layer .body {
+    fill: #b5773f;
 }
 
-div.bottom {
-    width: 310px;
-    height: 90px;
+.layer .outline {
+    fill: none;
+    stroke: #6b3f1d;
+    stroke-width: 6;
 }
 
-div.eye {
-    position: absolute;
-    top: 15px;
-    width: 45px;
-    height: 50px;
-    background-color: white;
-    border: 4px solid #5c3a1a;
+.eye {
+    fill: #2b1608;
 }
 
-div.eye.left {
-    left: 45px;
+.shine {
+    fill: white;
 }
 
-div.eye.right {
-    right: 45px;
+.cheek {
+    fill: #ff8fa3;
+    opacity: 0.8;
 }
 
-div.pupil {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    width: 18px;
-    height: 22px;
-    background-color: black;
+.mouth {
+    fill: none;
+    stroke: #2b1608;
+    stroke-width: 6;
+    stroke-linecap: round;
 }
 
-div.mouth {
-    position: absolute;
-    top: 20px;
-    left: 95px;
-    width: 120px;
-    height: 35px;
-    background-color: #3a1f0b;
-    border-bottom: 12px solid #e85a7a;
+svg#spoon {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    overflow: visible;
+    display: none;
+}
+
+g#spoon-body {
+    transform-box: view-box;
+    transform-origin: 195px 20px;
+    transition: transform 0.12s;
+}
+
+svg#spoon.down g#spoon-body {
+    transform: rotate(-20deg);
+}
+
+svg#spoon .handle {
+    fill: url(#metal);
+    stroke: #6b727b;
+    stroke-width: 1.5;
+}
+
+svg#spoon .handle-shine {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0.8;
+}
+
+svg#spoon .belly {
+    fill: url(#belly);
+    stroke: #6b727b;
+    stroke-width: 1.5;
+}
+
+svg#spoon .rim {
+    fill: url(#inside);
+    stroke: #6b727b;
+    stroke-width: 2;
+}
+
+g#scoop {
+    display: none;
+}
+
+g#scoop.show {
+    display: inline;
+}
+
+g#scoop .mound {
+    fill: #b5773f;
+    stroke: #6b3f1d;
+    stroke-width: 2;
+}
+
+g#scoop .mound-shine {
+    fill: #d9a066;
+}
+
+g#scoop .lip {
+    fill: none;
+    stroke: #6b727b;
+    stroke-width: 2.5;
 }
