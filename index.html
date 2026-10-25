@@ -2,13 +2,36 @@
 <html lang="ko">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Ddong</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div id="scenery">
+            <div id="sun"></div>
+            <div class="cloud" style="top: 8%; animation-duration: 70s;"></div>
+            <div class="cloud small" style="top: 22%; animation-duration: 95s; animation-delay: -40s;"></div>
+            <div class="cloud" style="top: 35%; animation-duration: 120s; animation-delay: -80s;"></div>
+            <div class="hill back"></div>
+            <div class="hill front"></div>
+            <div id="flowers"></div>
+        </div>
+        <div id="rain"></div>
+
         <div id="container">
             <h1>당신이 똥을 먹은 횟수: <span id="count">0</span></h1>
-            <div id="content" onclick="add()">
+            <div id="stats">
+                <span>💩 똥 포인트 <b id="points">0</b></span>
+                <span>🥄 클릭당 <b id="per-click">1</b></span>
+                <span>⏱️ 초당 <b id="per-sec">0</b></span>
+            </div>
+            <div id="fever">
+                <div id="fever-bar"></div>
+                <span id="fever-label">연타해서 피버 게이지를 채우세요!</span>
+            </div>
+            <div id="content">
+                <span class="fly" style="animation-duration: 3s;">🪰</span>
+                <span class="fly" style="animation-duration: 4.5s; animation-delay: -2s;">🪰</span>
                 <svg viewBox="0 0 320 290" width="320" height="290">
                     <g class="layer" transform="rotate(-20 192 56)">
                         <rect class="light" x="170" y="34" width="44" height="44" rx="20"/>
@@ -40,7 +63,24 @@
                 </svg>
             </div>
         </div>
-        <svg id="spoon" viewBox="0 0 200 110" width="200" height="110">
+
+        <div id="workers"></div>
+
+        <aside id="shop">
+            <h2>🥄 숟가락 강화</h2>
+            <div id="shop-click" class="shop-list"></div>
+            <h2>🧑 똥 먹는 알바 고용</h2>
+            <div id="shop-workers" class="shop-list"></div>
+            <h2>🎨 똥 스킨</h2>
+            <div id="shop-skins" class="shop-list"></div>
+            <h2>🏆 업적 <span id="ach-count">0</span></h2>
+            <div id="achievements"></div>
+            <button id="reset">기록 초기화</button>
+        </aside>
+
+        <div id="toasts"></div>
+
+        <svg id="spoon" viewBox="0 0 200 110" width="110" height="110">
             <defs>
                 <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0" stop-color="#f4f6f8"/>
