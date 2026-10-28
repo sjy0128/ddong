@@ -1,0 +1,114 @@
+div#scenery {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+div#sun {
+    position: absolute;
+    top: 6%;
+    left: 6%;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(#fff7b0, #ffd23f 60%, #ffb703);
+    box-shadow: 0 0 60px 25px rgba(255, 220, 80, 0.6);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% { box-shadow: 0 0 90px 40px rgba(255, 220, 80, 0.45); }
+}
+
+.cloud {
+    position: absolute;
+    left: -220px;
+    width: 180px;
+    height: 56px;
+    background: white;
+    border-radius: 40px;
+    opacity: 0.9;
+    animation: drift linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 80px;
+    height: 80px;
+    left: 25px;
+    top: -40px;
+}
+
+.cloud::after {
+    width: 60px;
+    height: 60px;
+    left: 90px;
+    top: -26px;
+}
+
+.cloud.small {
+    scale: 0.6;
+}
+
+@keyframes drift {
+    to { left: 110vw; }
+}
+
+.hill {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.hill.back {
+    width: 90vw;
+    height: 45vh;
+    left: -15vw;
+    bottom: -22vh;
+    background: #7cc95c;
+}
+
+.hill.front {
+    width: 130vw;
+    height: 40vh;
+    left: 5vw;
+    bottom: -24vh;
+    background: linear-gradient(#5fb247, #3f8f30);
+}
+
+div#flowers {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 14vh;
+}
+
+div#flowers span {
+    position: absolute;
+    font-size: 20px;
+}
+
+div#rain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+div#rain span {
+    position: absolute;
+    top: -40px;
+    animation: fall linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+}

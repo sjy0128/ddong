@@ -1,0 +1,53 @@
+div#workers {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: calc(100vw - 320px);
+    height: 90px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+    gap: 2px 10px;
+    padding: 8px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+div#workers .group {
+    display: flex;
+    align-items: flex-end;
+}
+
+div#workers .count {
+    font-size: 13px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    padding: 0 5px;
+    margin-left: 2px;
+}
+
+.worker {
+    position: relative;
+    font-size: 28px;
+    animation: chew 0.8s ease-in-out infinite;
+}
+
+.worker .food {
+    position: absolute;
+    right: -6px;
+    bottom: 0;
+    font-size: 13px;
+    animation: eat 2s steps(1) infinite;
+    animation-delay: inherit;
+}
+
+@keyframes chew {
+    50% { transform: translateY(-5px) scaleY(0.92); }
+}
+
+@keyframes eat {
+    0% { opacity: 1; }
+    70% { opacity: 0; }
+}

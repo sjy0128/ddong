@@ -1,0 +1,33 @@
+.layer .light {
+    fill: #cf9258;
+}
+
+.layer .body {
+    fill: #b5773f;
+}
+
+.layer .outline {
+    fill: none;
+    stroke: #6b3f1d;
+    stroke-width: 6;
+}
+
+.eye {
+    fill: #2b1608;
+}
+
+.shine {
+    fill: white;
+}
+
+.cheek {
+    fill: #ff8fa3;
+    opacity: 0.8;
+}
+
+.mouth {
+    fill: none;
+    stroke: #2b1608;
+    stroke-width: 6;
+    stroke-linecap: round;
+}

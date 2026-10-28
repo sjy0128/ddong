@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(#5ec8f2, #aee8ff 55%, #e6f9ff);
+    cursor: none;
+    font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    color: #3a210c;
+    overflow: hidden;
+}
+
+button {
+    cursor: none;
+    font: inherit;
+}

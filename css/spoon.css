@@ -1,0 +1,69 @@
+svg#spoon {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    overflow: visible;
+    display: none;
+    z-index: 1000;
+}
+
+g#spoon-body {
+    transform-box: view-box;
+    transform-origin: 195px 20px;
+    transition: transform 0.05s;
+}
+
+svg#spoon.down g#spoon-body {
+    transform: rotate(-10deg);
+}
+
+svg#spoon .handle {
+    fill: url(#metal);
+    stroke: #6b727b;
+    stroke-width: 1.5;
+}
+
+svg#spoon .handle-shine {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0.8;
+}
+
+svg#spoon .belly {
+    fill: url(#belly);
+    stroke: #6b727b;
+    stroke-width: 1.5;
+}
+
+svg#spoon .rim {
+    fill: url(#inside);
+    stroke: #6b727b;
+    stroke-width: 2;
+}
+
+g#scoop {
+    display: none;
+}
+
+g#scoop.show {
+    display: inline;
+}
+
+g#scoop .mound {
+    fill: #b5773f;
+    stroke: #6b3f1d;
+    stroke-width: 2;
+}
+
+g#scoop .mound-shine {
+    fill: #d9a066;
+}
+
+g#scoop .lip {
+    fill: none;
+    stroke: #6b727b;
+    stroke-width: 2.5;
+}

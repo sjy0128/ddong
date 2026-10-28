@@ -1,0 +1,34 @@
+@media (max-width: 800px) {
+    div#container,
+    div#workers {
+        width: 100vw;
+    }
+
+    div#container {
+        height: 60vh;
+        padding-bottom: 0;
+    }
+
+    div#workers {
+        bottom: 40vh;
+        height: 70px;
+    }
+
+    aside#shop {
+        top: auto;
+        bottom: 0;
+        width: 100vw;
+        height: 40vh;
+        border-left: none;
+        border-top: 6px solid #6b3f1d;
+    }
+
+    div#toasts {
+        left: 50vw;
+    }
+
+    div#content svg {
+        width: 200px;
+        height: 180px;
+    }
+}

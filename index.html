@@ -4,7 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Ddong</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/scenery.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/ddong.css">
+        <link rel="stylesheet" href="css/workers.css">
+        <link rel="stylesheet" href="css/shop.css">
+        <link rel="stylesheet" href="css/effects.css">
+        <link rel="stylesheet" href="css/spoon.css">
+        <link rel="stylesheet" href="css/responsive.css">
     </head>
     <body>
         <div id="scenery">
@@ -24,12 +32,14 @@
                 <span>💩 똥 포인트 <b id="points">0</b></span>
                 <span>🥄 클릭당 <b id="per-click">1</b></span>
                 <span>⏱️ 초당 <b id="per-sec">0</b></span>
+                <span>✨ 배율 <b id="mult">×1</b></span>
             </div>
             <div id="fever">
                 <div id="fever-bar"></div>
                 <span id="fever-label">연타해서 피버 게이지를 채우세요!</span>
             </div>
             <div id="content">
+                <span id="accessory"></span>
                 <span class="fly" style="animation-duration: 3s;">🪰</span>
                 <span class="fly" style="animation-duration: 4.5s; animation-delay: -2s;">🪰</span>
                 <svg viewBox="0 0 320 290" width="320" height="290">
@@ -62,17 +72,23 @@
                     <path class="mouth" d="M142 202 Q160 226 178 202"/>
                 </svg>
             </div>
+            <p id="hint">꾹 누르고 있으면 계속 먹어요 · 스페이스바도 OK</p>
         </div>
 
         <div id="workers"></div>
 
         <aside id="shop">
+            <div id="buy-mode">
+                <button data-n="1" class="on">×1</button>
+                <button data-n="10">×10</button>
+                <button data-n="max">MAX</button>
+            </div>
             <h2>🥄 숟가락 강화</h2>
             <div id="shop-click" class="shop-list"></div>
             <h2>🧑 똥 먹는 알바 고용</h2>
             <div id="shop-workers" class="shop-list"></div>
-            <h2>🎨 똥 스킨</h2>
-            <div id="shop-skins" class="shop-list"></div>
+            <h2>🧬 똥 진화</h2>
+            <div id="shop-evolution" class="shop-list"></div>
             <h2>🏆 업적 <span id="ach-count">0</span></h2>
             <div id="achievements"></div>
             <button id="reset">기록 초기화</button>
@@ -109,6 +125,11 @@
                 </g>
             </g>
         </svg>
-        <script src="script.js"></script>
+        <script src="js/data.js"></script>
+        <script src="js/state.js"></script>
+        <script src="js/effects.js"></script>
+        <script src="js/shop.js"></script>
+        <script src="js/spoon.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

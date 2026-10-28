@@ -1,0 +1,146 @@
+div#container {
+    position: relative;
+    z-index: 1;
+    width: calc(100vw - 320px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding-bottom: 90px;
+}
+
+h1 {
+    color: white;
+    text-shadow: 0 3px 0 #6b3f1d, 0 0 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+div#stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+div#stats span {
+    background: rgba(255, 255, 255, 0.8);
+    border: 3px solid #6b3f1d;
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 15px;
+}
+
+div#fever {
+    position: relative;
+    width: min(360px, 80%);
+    height: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 3px solid #6b3f1d;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+div#fever-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ffb703, #fb5607);
+}
+
+div#fever.on div#fever-bar {
+    background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff, #ff006e);
+    background-size: 200% 100%;
+    animation: slide 0.6s linear infinite;
+}
+
+@keyframes slide {
+    to { background-position: -200% 0; }
+}
+
+span#fever-label {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+div#fever.on span#fever-label {
+    color: white;
+}
+
+div#content {
+    position: relative;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-overflow: clip;
+    user-select: none;
+}
+
+div#content svg {
+    display: block;
+    transform-origin: bottom center;
+    filter: drop-shadow(0 12px 8px rgba(0, 0, 0, 0.25));
+}
+
+span#accessory {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    translate: -50% 0;
+    font-size: 56px;
+    pointer-events: none;
+    animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+    50% { transform: translateY(-8px) rotate(6deg); }
+}
+
+p#hint {
+    font-size: 13px;
+    color: #3a210c;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    padding: 3px 12px;
+}
+
+.fly {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    font-size: 22px;
+    pointer-events: none;
+    animation: buzz linear infinite;
+}
+
+@keyframes buzz {
+    0% { transform: rotate(0deg) translateX(190px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(190px) rotate(-360deg); }
+}
+
+.float {
+    position: fixed;
+    pointer-events: none;
+    font-weight: 900;
+    font-size: 26px;
+    color: #fff;
+    text-shadow: 0 2px 0 #6b3f1d, 0 0 6px #6b3f1d;
+    animation: rise 1s ease-out forwards;
+    z-index: 900;
+}
+
+.float.big {
+    font-size: 34px;
+    color: #ffd23f;
+}
+
+@keyframes rise {
+    to { transform: translateY(-90px); opacity: 0; }
+}
