@@ -10,6 +10,7 @@ const state = {
     goldens: 0,
     owned: {},
     evo: 0,
+    world: 0,
     achievements: [],
     savedAt: Date.now(),
 };
@@ -44,6 +45,10 @@ function fmt(n) {
 
 const owned = (id) => state.owned[id] || 0;
 const evolution = () => EVOLUTIONS[state.evo];
+const world = () => WORLDS[state.world];
+const nextWorld = () => WORLDS[state.world + 1];
+const totalMult = () => evolution().mult * world().mult;
+const canWarp = () => nextWorld() && state.evo === EVOLUTIONS.length - 1 && state.points >= nextWorld().cost;
 const totalWorkers = () => WORKERS.reduce((sum, w) => sum + owned(w.id), 0);
 const feverOn = () => Date.now() < boost.feverUntil;
 const frenzyOn = () => Date.now() < boost.frenzyUntil;
@@ -61,7 +66,7 @@ function maxAffordable(item) {
 }
 
 function basePower() {
-    return (1 + CLICK_UPGRADES.reduce((sum, u) => sum + owned(u.id) * u.power, 0)) * evolution().mult;
+    return (1 + CLICK_UPGRADES.reduce((sum, u) => sum + owned(u.id) * u.power, 0)) * totalMult();
 }
 
 function clickPower() {
@@ -72,7 +77,20 @@ function clickPower() {
 }
 
 function perSecond() {
-    return WORKERS.reduce((sum, w) => sum + owned(w.id) * w.rate, 0) * evolution().mult;
+    return WORKERS.reduce((sum, w) => sum + owned(w.id) * w.rate, 0) * totalMult();
+}
+
+// 다음 월드로: 진행 상황을 초기화하고 월드 배율을 올린다 (먹은 횟수·업적은 유지)
+function warp() {
+    if (!canWarp()) return false;
+    state.world++;
+    state.points = 0;
+    state.owned = {};
+    state.evo = 0;
+    boost.heat = 0;
+    boost.feverUntil = 0;
+    boost.frenzyUntil = 0;
+    return true;
 }
 
 function gain(n) {

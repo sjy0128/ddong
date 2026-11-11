@@ -1,0 +1,174 @@
+/* 월드별 배경 테마. body[data-world]로 전환한다. 기본(meadow)은 scenery.css 그대로. */
+
+body {
+    transition: background 1s;
+}
+
+div#stars {
+    position: absolute;
+    inset: 0;
+    display: none;
+}
+
+div#stars span {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.8);
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    50% { opacity: 0.2; }
+}
+
+/* 🌙 한밤의 똥 마을 */
+body[data-world="night"] {
+    background: linear-gradient(#0b1440, #27306b 60%, #4a3f7a);
+}
+
+body[data-world="night"] div#stars,
+body[data-world="space"] div#stars {
+    display: block;
+}
+
+body[data-world="night"] div#sun {
+    background: radial-gradient(circle at 35% 35%, #fffbe8, #f1e7b8 60%, #d8c88a);
+    box-shadow: 0 0 60px 20px rgba(255, 245, 200, 0.35);
+    animation: none;
+}
+
+body[data-world="night"] .cloud {
+    opacity: 0.25;
+}
+
+body[data-world="night"] .hill.back {
+    background: #2d4a3a;
+}
+
+body[data-world="night"] .hill.front {
+    background: linear-gradient(#24402d, #142619);
+}
+
+/* 🏜️ 똥 사막 */
+body[data-world="desert"] {
+    background: linear-gradient(#f7a541, #ffd27a 55%, #fff1c9);
+}
+
+body[data-world="desert"] div#sun {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(#fffbe0, #ffcf3a 55%, #ff7b00);
+    box-shadow: 0 0 120px 60px rgba(255, 160, 40, 0.6);
+}
+
+body[data-world="desert"] .cloud {
+    display: none;
+}
+
+body[data-world="desert"] .hill {
+    border-radius: 50% 50% 0 0;
+}
+
+body[data-world="desert"] .hill.back {
+    background: #e7b166;
+}
+
+body[data-world="desert"] .hill.front {
+    background: linear-gradient(#d9984a, #b8742c);
+}
+
+/* ❄️ 얼음똥 설원 */
+body[data-world="snow"] {
+    background: linear-gradient(#9fb8cf, #d5e4f0 55%, #f4f9fd);
+}
+
+body[data-world="snow"] div#sun {
+    background: radial-gradient(#ffffff, #fdf4d0 60%, #f3dc9a);
+    box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.7);
+}
+
+body[data-world="snow"] .cloud {
+    background: #eef3f8;
+}
+
+body[data-world="snow"] .cloud::before,
+body[data-world="snow"] .cloud::after {
+    background: #eef3f8;
+}
+
+body[data-world="snow"] .hill.back {
+    background: #e4eef7;
+}
+
+body[data-world="snow"] .hill.front {
+    background: linear-gradient(#ffffff, #cfdeec);
+}
+
+/* 🚀 똥 우주 */
+body[data-world="space"] {
+    background: radial-gradient(ellipse at 70% 20%, #3b1a6b, #120a2e 55%, #05030f);
+}
+
+body[data-world="space"] div#sun {
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle at 35% 35%, #ffb3d9, #b44cc9 55%, #5b1f8a);
+    box-shadow: 0 0 60px 10px rgba(200, 100, 255, 0.4), inset -18px -18px 30px rgba(0, 0, 0, 0.35);
+    animation: none;
+}
+
+body[data-world="space"] div#sun::after {
+    content: "";
+    position: absolute;
+    left: -40px;
+    top: 52px;
+    width: 220px;
+    height: 36px;
+    border: 6px solid rgba(255, 210, 140, 0.8);
+    border-radius: 50%;
+    rotate: -18deg;
+}
+
+body[data-world="space"] .cloud {
+    display: none;
+}
+
+body[data-world="space"] .hill.back {
+    background: #6c6f80;
+}
+
+body[data-world="space"] .hill.front {
+    background: radial-gradient(circle at 30% 30%, #9a9db0 0 6%, transparent 7%),
+        radial-gradient(circle at 70% 20%, #8a8da0 0 4%, transparent 5%),
+        linear-gradient(#b5b8c6, #7d8094);
+}
+
+body[data-world="space"] div#flowers span {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    50% { transform: translateY(-10px) rotate(-8deg); }
+}
+
+/* 월드 이동 연출 */
+.warp {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    font-size: 160px;
+    background: white;
+    pointer-events: none;
+    animation: warp 1.6s ease-out forwards;
+}
+
+@keyframes warp {
+    0% { opacity: 1; font-size: 20px; }
+    40% { opacity: 1; font-size: 200px; }
+    100% { opacity: 0; font-size: 260px; }
+}

@@ -70,6 +70,31 @@ function buildShop() {
         });
     });
 
+    WORLDS.forEach((w, i) => {
+        if (i === 0) return;
+        const btn = makeItem({ ...w, desc: `${w.desc} · 월드 배율 ×${fmt(w.mult)}` }, () => {
+            if (i !== state.world + 1 || !canWarp()) return;
+            if (!confirm(`${w.icon} ${w.name}(으)로 떠날까요?\n포인트·숟가락·알바·진화가 초기화되지만, 모든 획득량이 영구히 ×${fmt(w.mult)} 돼요!`)) return;
+            if (!warp()) return;
+            renderWorkers();
+            applyEvolution();
+            applyWorld(true);
+            save();
+            toast(`${w.icon} ${w.name} 도착! 모든 획득량 ×${fmt(w.mult)}`);
+        });
+        document.querySelector("#shop-world").append(btn);
+        shopItems.push(() => {
+            const done = i <= state.world;
+            btn.classList.toggle("done", done);
+            btn.classList.toggle("locked", i > state.world + 1);
+            btn.querySelector(".owned").textContent = i === state.world ? "📍" : "";
+            if (done) btn.querySelector(".price").textContent = "도착 완료";
+            else if (i === state.world + 1 && state.evo < EVOLUTIONS.length - 1) btn.querySelector(".price").textContent = "🌈 무지개똥 필요";
+            else btn.querySelector(".price").textContent = `💩 ${fmt(w.cost)}`;
+            btn.disabled = i !== state.world + 1 || !canWarp();
+        });
+    });
+
     const box = document.querySelector("div#achievements");
     for (const ach of ACHIEVEMENTS) {
         const el = document.createElement("span");

@@ -64,7 +64,7 @@ function render() {
     document.querySelector("#points").textContent = fmt(state.points);
     document.querySelector("#per-click").textContent = fmt(clickPower());
     document.querySelector("#per-sec").textContent = fmt(perSecond());
-    document.querySelector("#mult").textContent = `×${fmt(evolution().mult)}`;
+    document.querySelector("#mult").textContent = `×${fmt(totalMult())}`;
     updateShop();
 
     const fever = document.querySelector("div#fever");
@@ -92,7 +92,7 @@ function tick(now) {
     gain(perSecond() * dt);
     boost.heat = Math.max(0, boost.heat - 10 * dt);
 
-    rainAcc += Math.min(perSecond() / (30 * evolution().mult), 3) * dt;
+    rainAcc += Math.min(perSecond() / (30 * totalMult()), 3) * dt;
     while (rainAcc >= 1) {
         rainAcc--;
         dropRain();
@@ -128,7 +128,8 @@ if (away > 10 && perSecond() > 0) {
 buildShop();
 applyEvolution();
 renderWorkers();
-plantFlowers();
+scatterStars();
+applyWorld(false);
 checkAchievements();
 requestAnimationFrame(tick);
 setInterval(save, 5000);

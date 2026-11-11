@@ -28,13 +28,40 @@ function applyEvolution() {
 
 function plantFlowers() {
     const box = document.querySelector("div#flowers");
+    box.innerHTML = "";
+    const deco = world().deco;
     for (let i = 0; i < 18; i++) {
         const el = document.createElement("span");
-        el.textContent = ["🌼", "🌷", "🌱", "🍄", "🌸"][i % 5];
+        el.textContent = deco[i % deco.length];
         el.style.left = `${Math.random() * 95}%`;
         el.style.bottom = `${Math.random() * 70}%`;
         box.append(el);
     }
+}
+
+function scatterStars() {
+    const box = document.querySelector("div#stars");
+    for (let i = 0; i < 60; i++) {
+        const el = document.createElement("span");
+        el.style.left = `${Math.random() * 100}%`;
+        el.style.top = `${Math.random() * 70}%`;
+        el.style.animationDelay = `${-Math.random() * 3}s`;
+        el.style.scale = 0.5 + Math.random();
+        box.append(el);
+    }
+}
+
+// 월드에 맞게 배경을 바꾼다. animate가 true면 순간이동 연출도 보여준다.
+function applyWorld(animate) {
+    document.body.dataset.world = world().id;
+    document.querySelector("#world").textContent = `${world().icon} ${world().name}`;
+    plantFlowers();
+    if (!animate) return;
+    const el = document.createElement("div");
+    el.className = "warp";
+    el.textContent = world().icon;
+    document.body.append(el);
+    setTimeout(() => el.remove(), 1600);
 }
 
 function dropRain() {

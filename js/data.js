@@ -35,6 +35,16 @@ const EVOLUTIONS = [
     { name: "무지개똥", icon: "🌈", desc: "유니콘이 쌌음", mult: 1000, cost: 2000000000, filter: null, accessory: "🦄", size: 1.2 },
 ];
 
+// 무지개똥까지 진화하면 다음 월드로 넘어갈 수 있다.
+// 넘어가면 포인트·숟가락·알바·진화가 초기화되지만, 월드 배율이 영구히 붙는다.
+const WORLDS = [
+    { id: "meadow", name: "똥꽃 들판", icon: "🌼", desc: "모든 것이 시작된 곳", mult: 1, cost: 0, deco: ["🌼", "🌷", "🌱", "🍄", "🌸"] },
+    { id: "night", name: "한밤의 똥 마을", icon: "🌙", desc: "반딧불 대신 똥불", mult: 10, cost: 1e10, deco: ["🏮", "🍄", "🦉", "🌾", "🕯️"] },
+    { id: "desert", name: "똥 사막", icon: "🏜️", desc: "바싹 마른 맛동산", mult: 100, cost: 1e12, deco: ["🌵", "🦂", "🐪", "🌵", "🪨"] },
+    { id: "snow", name: "얼음똥 설원", icon: "❄️", desc: "똥 아이스크림 천국", mult: 1000, cost: 1e14, deco: ["🌲", "☃️", "🐧", "🌲", "🧊"] },
+    { id: "space", name: "똥 우주", icon: "🚀", desc: "무중력 똥 먹방", mult: 10000, cost: 1e16, deco: ["🛸", "🌑", "👾", "🛰️", "💫"] },
+];
+
 const ACHIEVEMENTS = [
     { id: "t1", icon: "🥄", name: "첫 숟갈", desc: "드디어 똥을 먹었다...", check: () => state.total >= 1 },
     { id: "t1k", icon: "😋", name: "똥 맛을 알아버림", desc: "똥 1,000개 먹기", check: () => state.total >= 1e3 },
@@ -48,4 +58,6 @@ const ACHIEVEMENTS = [
     { id: "fever", icon: "🔥", name: "피버 타임!", desc: "피버 발동", check: () => state.fevers >= 1 },
     { id: "golden", icon: "🌟", name: "황금을 찾아서", desc: "황금똥 클릭", check: () => state.goldens >= 1 },
     { id: "evo", icon: "🧬", name: "최종 진화", desc: "무지개똥까지 진화", check: () => state.evo === EVOLUTIONS.length - 1 },
+    { id: "world2", icon: "🌙", name: "새로운 세계", desc: "다음 월드로 이동", check: () => state.world >= 1 },
+    { id: "world5", icon: "🚀", name: "우주 정복", desc: "똥 우주 도착", check: () => state.world === WORLDS.length - 1 },
 ];
